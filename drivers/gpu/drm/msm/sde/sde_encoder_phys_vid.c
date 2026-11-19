@@ -981,6 +981,7 @@ static int _sde_encoder_phys_vid_wait_for_vblank(
 			if (atomic_add_unless(
 				&phys_enc->pending_retire_fence_cnt, -1, 0))
 				event |= event_helper;
+			phys_enc->enable_state = SDE_ENC_ERR_NEEDS_HW_RESET;
 		} else if (!ret) {
 			event = SDE_ENCODER_FRAME_EVENT_DONE;
 		}
